@@ -1,46 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import "../App.css";
+import React from 'react';
+import '../App.css';
 
 function Footer(props) {
 	return (
-		<footerend>
+		<footer>
 			<div>
-				<a href="/">
-					{props.footer}
-				</a>
+				<a href="/">{props.footer}</a>
 			</div>
 			<div>
-				<a href="/">
-					Privacy & Legal
-				</a>
+				<a href="/">Privacy & Legal</a>
 			</div>
 			<div>
-				<a href="/">
-					Contact
-				</a>
+				<a href="/">Contact</a>
 			</div>
 			<div>
-				<a href="/">
-					Careers
-				</a>
+				<a href="/">Careers</a>
 			</div>
 			<div>
-				<a href="/">
-					News
-				</a>
+				<a href="/">News</a>
 			</div>
 			<div>
-				<a href="/">
-					Engage
-				</a>
+				<a href="/">Engage</a>
 			</div>
 			<div>
-				<a href="/">
-					Locations
-				</a>
+				<a href="/">Locations</a>
 			</div>
-		</footerend>
+		</footer>
 	);
 }
 

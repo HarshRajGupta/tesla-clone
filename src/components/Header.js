@@ -4,30 +4,25 @@ import styled from 'styled-components';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
+import logo from '../assets/images/logo.svg';
 import '../App.css';
 
 function Header() {
 	const [burgerStatus, setBurgerStatus] = useState(false);
 	const cars = useSelector(selectCars);
-	console.log(cars);
 	return (
 		<Container>
 			<a href="#">
 				<img
-					src="/images/logo.svg"
+					src={logo}
 					alt="TESLA"
 				/>
 			</a>
 			<Menu>
 				{cars &&
 					cars.map((car, index) => (
-						<span>
-							<a
-								key={index}
-								href={'#' + car.id}
-							>
-								{car.name}
-							</a>
+						<span key={index}>
+							<a href={'#' + car.id}>{car.name}</a>
 						</span>
 					))}
 			</Menu>
@@ -193,41 +188,40 @@ const RightMenu = styled.div`
 `;
 
 const BurgerNav = styled.div`
-position: absolute;
-min-height: 100vh;
-top: 0;
-right: 0;
-background: white;
-height: inherit;
-padding: 20px;
-display: grid;
-grid-template-columns: 1fr;
-list-style: none;
-scroll-snap-align: none;
-text-align: center;
-scroll-snap-type: y mandatory;
-overflow: auto !important;
-transform: ${(props) =>
-	props.show ? 'translate(0, 0)' : 'translate(100%, 0)'};
-transition: 1s;
-li {
-    padding: 12px 15px;
-	border-radius: 15px;
-    a{
-        margin-left: 5px;
-    }
-
-}
-li:hover {
-	background: hsla(0,0%,0%,.05);
-}
-width: 300px;
-text-align: start;
-@media(min-width:1125px)
-{
-    .temp {
-    	display: none;
-    }
+	position: absolute;
+	min-height: 100vh;
+	top: 0;
+	right: 0;
+	background: white;
+	height: inherit;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 1fr;
+	list-style: none;
+	scroll-snap-align: none;
+	text-align: center;
+	scroll-snap-type: y mandatory;
+	overflow: auto !important;
+	transform: ${(props) =>
+		props.show ? 'translate(0, 0)' : 'translate(100%, 0)'};
+	transition: 1s;
+	li {
+		padding: 12px 15px;
+		border-radius: 15px;
+		a {
+			margin-left: 5px;
+		}
+	}
+	li:hover {
+		background: hsla(0, 0%, 0%, 0.05);
+	}
+	width: 300px;
+	text-align: start;
+	@media (min-width: 1125px) {
+		.temp {
+			display: none;
+		}
+	}
 `;
 
 const CustomClose = styled(CancelIcon)`

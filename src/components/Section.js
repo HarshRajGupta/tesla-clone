@@ -1,15 +1,45 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import Footer from './Footer';
 import '../App.css';
+import bg from '../assets/images';
+import dropDown from '../assets/images/down-arrow.svg';
 
 function Section(props) {
+	const [bgImg, setBgImg] = useState(bg.model3);
+	useEffect(() => {
+		switch (props.backgroundImg) {
+			case 'model-s.jpg':
+				setBgImg(bg.modelS);
+				break;
+			case 'model-x.jpg':
+				setBgImg(bg.modelX);
+				break;
+			case 'model-y.jpg':
+				setBgImg(bg.modelY);
+				break;
+			case 'solar-roof.jpg':
+				setBgImg(bg.solarRoof);
+				break;
+			case 'accessories.jpg':
+				setBgImg(bg.accessories);
+				break;
+			case 'model-3.jpg':
+				setBgImg(bg.model3);
+				break;
+			case 'solar-panel.jpg':
+				setBgImg(bg.solarPanel);
+				break;
+			default:
+				setBgImg(bg.model3);
+		}
+	}, [props]);
 	return (
 		<Wrap
 			id={props.ID}
-			bgImage={props.backgroundImg}
+			bgImage={bgImg}
 		>
 			<Fade bottom>
 				<ItemText>
@@ -46,7 +76,7 @@ function Section(props) {
 						</ButtonGroup>
 					))}
 				{(props.footer && <Footer footer={props.footer} />) || (
-					<DownArrow src="/images/down-arrow.svg" />
+					<DownArrow src={dropDown} />
 				)}
 			</Buttons>
 		</Wrap>
@@ -62,7 +92,7 @@ const Wrap = styled.div`
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-image: ${(props) => `url("/images/${props.bgImage}")`};
+	background-image: ${(props) => `url(${props.bgImage})`};
 	scroll-snap-align: start;
 	display: flex;
 	flex-direction: column;
